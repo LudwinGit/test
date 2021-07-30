@@ -1,0 +1,19 @@
+{
+    "services":[
+        {
+            "servicename": "tvmaze.com",
+            "type": "rest",
+            "url": "https://api.tvmaze.com/search/shows?q=",
+            "method": "get",
+            "data": ""
+
+        },
+        {
+            "servicename": "itunes.apple.com",
+            "type": "rest",
+            "url": "https://itunes.apple.com/search?term=",
+            "method": "get",
+            "data": "results"
+        }
+    ]
+}

@@ -1,0 +1,58 @@
+openapi: 3.0.0
+tags:
+  name: Servicios
+  description: API para busqueda entre servicios externos
+paths:
+  /servicio?busqueda=:
+    get:
+      tags:
+        - "servicio"
+      summary: "Buscar coincidencia en los servicios"
+      description: "El criterio de busqueda que ingresemos se utiliza para realizar la busqeuda en los servicios"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "busqueda"
+          in: "path"
+          description: "Criterio de busqueda en los servicios"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: Ok
+          # content:
+          #   application/json:
+          #   schema:
+          #     $ref: "../documentacion/servicios.yml#/components/schemas/Resultado"
+        "400":
+          description: "Debe ingresar el criterio de busqueda."
+components:
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    # Schema for error response body
+    Resultado:
+      type: object
+      properties:
+        url:
+          type: string
+        tipo:
+          type: string
+        nombre:
+          type: string
+        fuente:
+          type: string
+      required:
+        - code
+        - message
